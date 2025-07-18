@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UNO on Browser - ดวลกับบอท!</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css" />
+</head>
+
+<body class="text-white bg-gradient-to-br from-gray-900 via-indigo-900 to-black min-h-screen p-6 font-[Poppins] relative">
+
+  <!-- Heading -->
+  <h1 class="text-4xl lg:text-5xl font-extrabold mb-8 text-white drop-shadow-strong tracking-wide text-center">
+    UNO SHOWDOWN 🎮<br class="block lg:hidden" />
+  </h1>
+
+  <!-- Help Button (Fixed Top-Right) -->
+  <button onclick="toggleHelpModal()"
+    class="fixed top-6 right-6 z-50 bg-white text-gray-800 font-semibold py-2 px-4 rounded-lg shadow-lg hover:bg-gray-100 transition">
+    📖 คู่มือ
+  </button>
+
+  <!-- Help Modal -->
+  <div id="helpModal"
+    class="fixed inset-0 z-40 bg-black bg-opacity-70 backdrop-blur-sm hidden items-center justify-center">
+    <div class="bg-white text-gray-800 w-11/12 max-w-md p-6 rounded-xl shadow-2xl relative">
+      <h2 class="text-2xl font-bold mb-4">📖 คู่มือการเล่น UNO</h2>
+      <ul class="list-disc pl-5 space-y-2 text-sm">
+        <li>แจกไพ่ให้ผู้เล่นและบอทคนละ 7 ใบ</li>
+        <li>วางไพ่ที่มีสีหรือหมายเลขเดียวกับกองกลาง</li>
+        <li>ไพ่พิเศษ เช่น Reverse, Skip, Draw 2, Wild และ Draw 4 ทำงานตามกฎ UNO</li>
+        <li>กดปุ่ม <strong>📣 ประกาศ UNO!</strong> เมื่อเหลือใบเดียว</li>
+        <li>ถ้าลืมกด UNO และบอทจับได้ จะต้องจั่วเพิ่ม!</li>
+      </ul>
+      <button onclick="toggleHelpModal()"
+        class="absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-2xl">&times;</button>
+    </div>
+  </div>
+
+  <!-- Canvas Game -->
+  <canvas id="unoCanvas" width="900" height="600" class="rounded-xl shadow-2xl border-4 border-white"></canvas>
+
+  <!-- Wild Color Picker -->
+  <div id="wildColorPicker"
+    class="mt-8 p-6 bg-gray-800 bg-opacity-80 rounded-xl shadow-2xl hidden flex flex-col items-center gap-4 border border-gray-700 backdrop-blur-sm">
+    <p class="text-xl font-semibold text-gray-200">เลือกสีสำหรับ Wild Card:</p>
+    <div class="flex flex-wrap gap-4 justify-center">
+      <button onclick="chooseWildColor('red')"
+        class="w-24 h-12 bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg shadow-md flex items-center justify-center text-lg">
+        🔴 แดง
+      </button>
+      <button onclick="chooseWildColor('green')"
+        class="w-24 h-12 bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg shadow-md flex items-center justify-center text-lg">
+        🟢 เขียว
+      </button>
+      <button onclick="chooseWildColor('blue')"
+        class="w-24 h-12 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg shadow-md flex items-center justify-center text-lg">
+        🔵 น้ำเงิน
+      </button>
+      <button onclick="chooseWildColor('yellow')"
+        class="w-24 h-12 bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-2 px-4 rounded-lg shadow-md flex items-center justify-center text-lg">
+        🟡 เหลือง
+      </button>
+    </div>
+  </div>
+
+  <!-- UNO Button -->
+  <div class="mt-8">
+    <button id="unoButton"
+      class="bg-orange-600 hover:bg-orange-700 text-white font-extrabold text-xl py-3 px-8 rounded-full shadow-lg border-2 border-orange-400 uppercase tracking-wider transition-all duration-300 ease-in-out"
+      style="display: none;">
+      📣 ประกาศ UNO!
+    </button>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/utils.js"></script>
+  <script src="js/ui_rendering.js"></script>
+  <script src="js/game_logic.js"></script>
+  <script src="js/bot_ai.js"></script>
+  <script src="js/index.js"></script>
+
+  <!-- Toggle Modal Script -->
+  <script>
+    function toggleHelpModal() {
+      const modal = document.getElementById("helpModal");
+      modal.classList.toggle("hidden");
+      modal.classList.toggle("flex");
+    }
+  </script>
+
+</body>
+
+</html>

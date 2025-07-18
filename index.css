@@ -1,0 +1,119 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    /* ใช้ Poppins เป็น Font หลัก */
+    background: linear-gradient(135deg, #10B981, #065F46);
+    /* Green gradient background */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    /* จัดให้เนื้อหาเริ่มต้นจากด้านบน */
+    min-height: 100vh;
+    /* เต็มความสูงหน้าจอ */
+    padding-top: 2rem;
+    /* เพิ่ม padding ด้านบน */
+    padding-bottom: 2rem;
+    /* เพิ่ม padding ด้านล่าง */
+}
+
+.drop-shadow-strong {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    /* เงาข้อความที่ชัดเจนขึ้น */
+}
+
+/* เพิ่ม animation ง่ายๆ ให้ปุ่มเมื่อ hover */
+button {
+    transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    /* ยกปุ่มขึ้นเล็กน้อย */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    /* เพิ่มเงาเมื่อ hover */
+}
+
+/* สำหรับปุ่ม Wild Color Picker ให้มีขอบสีดำเพื่อความคมชัด */
+#wildColorPicker button {
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    /* ขอบบางๆ */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#wildColorPicker button:hover {
+    transform: scale(1.05);
+    /* ขยายเล็กน้อยเมื่อ hover */
+}
+
+/* เพิ่มสไตล์สำหรับปุ่ม UNO ให้มี animation เฉพาะ */
+#unoButton {
+    animation: pulse-uno 1.5s infinite ease-in-out;
+    /* เพิ่ม animation กระพริบ */
+    transform-origin: center;
+}
+
+#unoButton:hover {
+    animation: none;
+    /* หยุด animation เมื่อ hover */
+}
+
+@keyframes pulse-uno {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 15px rgba(255, 165, 0, 0.8);
+    }
+
+    /* เงาสีส้มเรืองแสง */
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* สไตล์สำหรับ Canvas */
+#unoCanvas {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 6px 6px rgba(0, 0, 0, 0.2);
+    /* เงาที่ชัดเจนยิ่งขึ้น */
+    border-color: #F8FAFC;
+    /* border-white ที่สว่างขึ้น */
+    background-color: rgba(255, 255, 255, 0.05);
+    /* เพิ่มพื้นหลังโปร่งใสเล็กน้อย */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    body {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    #unoCanvas {
+        width: 95%;
+        /* ปรับขนาด Canvas ให้เหมาะกับหน้าจอเล็กลง */
+        height: auto;
+        max-width: 600px;
+        /* กำหนด max-width สำหรับ Canvas */
+    }
+
+    #wildColorPicker .flex {
+        flex-direction: column;
+        /* จัดปุ่มสีเป็นแนวตั้งบนมือถือ */
+        gap: 0.75rem;
+        /* ลดช่องว่าง */
+    }
+
+    #wildColorPicker button {
+        width: 80%;
+        /* ทำให้ปุ่มเต็มความกว้าง */
+        margin: 0 auto;
+        /* จัดกึ่งกลาง */
+    }
+
+    h1 {
+        font-size: 2.25rem;
+        /* ปรับขนาดหัวข้อ */
+    }
+}
